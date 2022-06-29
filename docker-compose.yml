@@ -1,4 +1,4 @@
-# This docker-compose file loads 
+# This docker-compose file loads
 #   nats with JetStream enabled
 #   a local OCI registry
 #   redis (for the kvredis capability provider)
@@ -13,16 +13,12 @@ services:
       - "6222:6222"
       - "8222:8222"
     command: [ "-js" ]
-  redis:
-    image: redis:6.2
-    ports:
-      - "6379:6379"
   registry:
     image: registry:2.7
     ports:
       - "5000:5000"
   wasmcloud:
-    image: wasmcloud/wasmcloud_host:latest
+    image: wasmcloud/wasmcloud_host:0.54.6
     environment:
       WASMCLOUD_RPC_HOST: nats
       WASMCLOUD_CTL_HOST: nats
